@@ -1,0 +1,70 @@
+$roboto: Roboto, sans-serif;
+$pinkBg: linear-gradient(180deg, rgba(99,119,225,1) 0%, rgba(41,32,165,1) 100%);
+$borderBlue: linear-gradient(180deg, rgba(255,255,255, 0.32) 32%, rgba(71,95,223,1) 100%);
+$mainBg: linear-gradient(180deg, rgba(107,125,222,0.12088585434173671) 0%, rgba(41,33,165,1) 59%);
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;  
+}
+
+@mixin block($bgColor) {
+  @include flex-column();
+  position: relative;
+  width: 419px;
+  height: 352px;
+  background: $bgColor;
+  border-radius: 20px;
+  border-bottom-right-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+}
+
+@mixin border($border-color) {
+  &::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    bottom: -3px;
+    right: -3px;
+    background: $border-color;
+    border-radius: 20px;
+    z-index: -1;
+  }
+}
+
+
+.main-block__header {
+  font-family: $roboto;
+  font-size: 24px;
+  padding-left: 26px;
+}
+
+.main-block__blocks {
+  position: relative;
+  z-index: -2;
+  background: $mainBg;
+  padding: 10px;
+  border-radius: 20px
+}
+
+.blue {@include block($pinkBg); @include border($borderBlue);}
+
+
+.main-section { @include flex-column()}
