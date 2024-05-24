@@ -1,26 +1,53 @@
 $roboto: Roboto, sans-serif;
-$pinkBg: linear-gradient(180deg, rgba(99,119,225,1) 0%, rgba(41,32,165,1) 100%);
-$borderBlue: linear-gradient(180deg, rgba(255,255,255, 0.32) 32%, rgba(71,95,223,1) 100%);
-$mainBg: linear-gradient(180deg, rgba(107,125,222,0.12088585434173671) 0%, rgba(41,33,165,1) 59%);
-
-
+$blueBg: linear-gradient(
+  180deg,
+  rgba(99, 119, 225, 1) 0%,
+  rgba(41, 32, 165, 1) 100%
+);
+$blueNumBg: linear-gradient(
+  180deg,
+  rgba(41, 32, 165, 1) 0%,
+  rgba(99, 119, 225, 1) 100%
+);
+$pinkBg: linear-gradient(180deg, rgba(225,99,225,1) 0%, rgba(116,21,149,1) 100%);
+$borderBlue: linear-gradient(
+  180deg,
+  rgba(255, 255, 255, 0.32) 0%,
+  rgba(71, 95, 223, 1) 100%
+);
+$borderPink: linear-gradient(180deg, rgba(116,21,149,1) 0%, rgba(225,99,225,1) 100%);
+$mainBg: linear-gradient(
+  180deg,
+  rgba(107, 125, 222, 0.12088585434173671) 0%,
+  rgba(41, 33, 165, 1) 59%
+);
+$mainBgBorder: linear-gradient(
+  180deg,
+  rgba(107, 125, 222, 0.3) 0%,
+  rgba(41, 33, 165, 1) 100%
+);
+$borderNums: linear-gradient(180deg, rgba(41,32,165,1) 0%, rgba(99,119,225,1) 50%);
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: $roboto;
+  font-weight: bold;
 }
- 
+
 @mixin flex-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 @mixin flex-row {
   display: flex;
   flex-direction: row;
-  justify-content: center;  
+  justify-content: center;
+  flex-wrap: wrap
 }
 
 @mixin block($bgColor) {
@@ -33,11 +60,12 @@ $mainBg: linear-gradient(180deg, rgba(107,125,222,0.12088585434173671) 0%, rgba(
   border-bottom-right-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
+  z-index: 3;
 }
 
 @mixin border($border-color) {
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -3px;
     left: -3px;
@@ -49,7 +77,46 @@ $mainBg: linear-gradient(180deg, rgba(107,125,222,0.12088585434173671) 0%, rgba(
   }
 }
 
+@mixin borderNum($border-color) {
+  &::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    bottom: -3px;
+    right: -3px;
+    background: $border-color;
+    border-radius: 50px;
+    z-index: -1;
+  }
+}
 
+@mixin arrows() {
+  position: absolute;
+  right: -55px;
+  top: 30%;
+  z-index: 500;
+}
+
+@mixin num($bg-color) {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  color: #ffffff;
+  background: $bg-color;
+}
+
+@mixin img() {
+  position: absolute;
+  bottom: -50px;
+  left: 50px;
+}
+.main-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .main-block__header {
   font-family: $roboto;
   font-size: 24px;
@@ -57,14 +124,65 @@ $mainBg: linear-gradient(180deg, rgba(107,125,222,0.12088585434173671) 0%, rgba(
 }
 
 .main-block__blocks {
+  @include flex-row();
   position: relative;
-  z-index: -2;
+  z-index: 100;
   background: $mainBg;
   padding: 10px;
-  border-radius: 20px
+  border-radius: 20px;
+  @include border($mainBgBorder);
+  box-shadow: 0px 19px 33px 4px rgba(23, 43, 151, 0.72);
 }
 
-.blue {@include block($pinkBg); @include border($borderBlue);}
+.blue {
+  @include block($blueBg);
+  cursor: pointer;
+  align-items: start;
+  justify-content: start;
+  border: 3px solid #7d97ff;
+  transition: 0.5s;
+}
 
+.main-section {
+  @include flex-column();
+  width: 100%;
+}
+.block-head {
+  @include flex-row();
+  font-size: 24px;
+  color: #ffffff;
+  gap: 16px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
 
-.main-section { @include flex-column()}
+.block-head_h2 {
+  font-size: 20px;
+}
+
+.block-head__num {
+  @include num($blueNumBg);
+  @include flex-column();
+  @include borderNum($borderNums);
+}
+
+.images {
+  @include img();
+}
+
+.arrows {
+  @include arrows()
+}
+
+.pink {
+  @include block($pinkBg);
+  align-items: start;
+  justify-content: start;
+  border: 3px solid #DB5FDD;
+}
+
+.pinkNum {
+  @include num($borderPink);
+  @include flex-column();
+  @include borderNum($borderPink)
+}
