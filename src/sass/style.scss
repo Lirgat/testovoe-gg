@@ -9,13 +9,41 @@ $blueNumBg: linear-gradient(
   rgba(41, 32, 165, 1) 0%,
   rgba(99, 119, 225, 1) 100%
 );
-$pinkBg: linear-gradient(180deg, rgba(225,99,225,1) 0%, rgba(116,21,149,1) 100%);
+$pinkBg: linear-gradient(
+  180deg,
+  rgba(225, 99, 225, 1) 0%,
+  rgba(116, 21, 149, 1) 100%
+);
 $borderBlue: linear-gradient(
   180deg,
   rgba(255, 255, 255, 0.32) 0%,
   rgba(71, 95, 223, 1) 100%
 );
-$borderPink: linear-gradient(180deg, rgba(116,21,149,1) 0%, rgba(225,99,225,1) 100%);
+$numGreenBg: linear-gradient(
+  180deg,
+  rgba(1, 77, 29, 1) 0%,
+  rgba(85, 206, 0, 1) 100%
+);
+$numGreenBorder: linear-gradient(
+  180deg,
+  rgba(1, 77, 29, 1) 0%,
+  rgba(85, 206, 0, 1) 51%
+);
+$greenMainBg: linear-gradient(
+  180deg,
+  rgba(85, 206, 0, 1) 0%,
+  rgba(1, 77, 29, 1) 100%
+);
+$borderPink: linear-gradient(
+  180deg,
+  rgba(116, 21, 149, 1) 0%,
+  rgba(225, 99, 225, 1) 54%
+);
+$bgPinkNum: linear-gradient(
+  180deg,
+  rgba(116, 21, 149, 1) 0%,
+  rgba(225, 99, 225, 1) 100%
+);
 $mainBg: linear-gradient(
   180deg,
   rgba(107, 125, 222, 0.12088585434173671) 0%,
@@ -26,7 +54,11 @@ $mainBgBorder: linear-gradient(
   rgba(107, 125, 222, 0.3) 0%,
   rgba(41, 33, 165, 1) 100%
 );
-$borderNums: linear-gradient(180deg, rgba(41,32,165,1) 0%, rgba(99,119,225,1) 50%);
+$borderNums: linear-gradient(
+  180deg,
+  rgba(41, 32, 165, 1) 0%,
+  rgba(99, 119, 225, 1) 50%
+);
 * {
   margin: 0;
   padding: 0;
@@ -47,7 +79,7 @@ $borderNums: linear-gradient(180deg, rgba(41,32,165,1) 0%, rgba(99,119,225,1) 50
   display: flex;
   flex-direction: row;
   justify-content: center;
-  flex-wrap: wrap
+  flex-wrap: wrap;
 }
 
 @mixin block($bgColor) {
@@ -61,6 +93,7 @@ $borderNums: linear-gradient(180deg, rgba(41,32,165,1) 0%, rgba(99,119,225,1) 50
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   z-index: 3;
+  cursor: pointer;
 }
 
 @mixin border($border-color) {
@@ -129,6 +162,7 @@ $borderNums: linear-gradient(180deg, rgba(41,32,165,1) 0%, rgba(99,119,225,1) 50
   z-index: 100;
   background: $mainBg;
   padding: 10px;
+  gap: 8px;
   border-radius: 20px;
   @include border($mainBgBorder);
   box-shadow: 0px 19px 33px 4px rgba(23, 43, 151, 0.72);
@@ -171,18 +205,38 @@ $borderNums: linear-gradient(180deg, rgba(41,32,165,1) 0%, rgba(99,119,225,1) 50
 }
 
 .arrows {
-  @include arrows()
+  @include arrows();
 }
 
 .pink {
   @include block($pinkBg);
   align-items: start;
   justify-content: start;
-  border: 3px solid #DB5FDD;
+  border: 3px solid #db5fdd;
+  z-index: 2;
 }
 
 .pinkNum {
-  @include num($borderPink);
+  @include num($bgPinkNum);
   @include flex-column();
-  @include borderNum($borderPink)
+  @include borderNum($borderPink);
+}
+
+.img2 {
+  left: 10px;
+  bottom: -70px;
+}
+
+.green {
+  @include block($greenMainBg);
+  align-items: start;
+  justify-content: start;
+  border: 3px solid #6ccb29;
+  z-index: 1;
+}
+
+.greenNum {
+  @include num($numGreenBg);
+  @include flex-column();
+  @include borderNum($numGreenBorder);
 }

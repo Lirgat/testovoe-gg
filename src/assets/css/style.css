@@ -24,6 +24,7 @@
   z-index: 100;
   background: linear-gradient(180deg, rgba(107, 125, 222, 0.1208858543) 0%, #2921a5 59%);
   padding: 10px;
+  gap: 8px;
   border-radius: 20px;
   box-shadow: 0px 19px 33px 4px rgba(23, 43, 151, 0.72); }
   .main-block__blocks::before {
@@ -52,6 +53,7 @@
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   z-index: 3;
+  cursor: pointer;
   cursor: pointer;
   align-items: start;
   justify-content: start;
@@ -129,9 +131,11 @@
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   z-index: 3;
+  cursor: pointer;
   align-items: start;
   justify-content: start;
-  border: 3px solid #DB5FDD; }
+  border: 3px solid #db5fdd;
+  z-index: 2; }
 
 .pinkNum {
   position: relative;
@@ -152,7 +156,55 @@
     left: -3px;
     bottom: -3px;
     right: -3px;
-    background: linear-gradient(180deg, #741595 0%, #e163e1 100%);
+    background: linear-gradient(180deg, #741595 0%, #e163e1 54%);
+    border-radius: 50px;
+    z-index: -1; }
+
+.img2 {
+  left: 10px;
+  bottom: -70px; }
+
+.green {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  width: 419px;
+  height: 352px;
+  background: linear-gradient(180deg, #55ce00 0%, #014d1d 100%);
+  border-radius: 20px;
+  border-bottom-right-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  z-index: 3;
+  cursor: pointer;
+  align-items: start;
+  justify-content: start;
+  border: 3px solid #6ccb29;
+  z-index: 1; }
+
+.greenNum {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  color: #ffffff;
+  background: linear-gradient(180deg, #014d1d 0%, #55ce00 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
+  .greenNum::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    bottom: -3px;
+    right: -3px;
+    background: linear-gradient(180deg, #014d1d 0%, #55ce00 51%);
     border-radius: 50px;
     z-index: -1; }
 
